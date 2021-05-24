@@ -4,27 +4,31 @@
 =====================================================
 */
 $(document).ready(function(){
-    var subForm='<form action="">'
-                    +'<div class="form-group">'
-                    +    '<input class="form-control main-comment" type="text" pattern="[A-Za-z]{3}" />'
-                    +'</div>'
-                    +'<button class="btn btn-primary send-main-comment" type="button">'
-                    +    'send'
-                    +'</button>'
-                +'</form><div class="clearfix"></div>'
-
-    $( ".send-main-comment" ).click(function() {
-        if($.trim($(this).parent().find(".main-comment").val()) ){
-            $(this).parents('.comments').children('.main').append( "<p>"+$(this).parent().find(".main-comment").val()   +"</p>" );
-            $(".main-comment").val('');
-        }
+    $('.one-slide').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        margin: 0,
+        drag: true,
+        navText: [
+        "<img src='assets/img/white_chevron_left.svg'>",
+            "<img src='assets/img/white_chevron_right.svg'>"]
     });
 
-
-    // $( ".send-sub-comment" ).click(function() {
-    //     if($.trim($(".sub-comment").val()) ){
-    //         $(this).parents('.main').children('.sub').append( "<p>"+$(this).parent().find(".sub-comment").val()+"</p>" );
-    //         $(".sub-comment").val('');
-    //     }
-    // });
+    $('.four-slide').owlCarousel({
+        items: 4,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: true,
+        margin: 24,
+        drag: true,
+        // navText: [
+        // "<img src='assets/img/white_chevron_left.svg'>",
+        //     "<img src='assets/img/white_chevron_right.svg'>"]
+    });
 });

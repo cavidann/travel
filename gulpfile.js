@@ -28,6 +28,8 @@ gulp.task('fileinclude', function () {
 //css bundle here  
 gulp.task('bundleCss', () => {
     gulp.src([
+        source + '/libs/owl-carousel/css/owl.carousel.min.css',
+        source + '/libs/owl-carousel/css/owl.theme.default.min.css',
         source + '/libs/components-bootstrap/css/bootstrap.min.css'
         // plugin`s css 
     ])
@@ -76,7 +78,8 @@ gulp.task('sass', () => {
 // scripts bundle starts
 gulp.task('bundleScript', function () {
     return gulp.src([
-        source + '/libs/jquery/dist/jquery.min.js'
+        source + '/libs/jquery/dist/jquery.min.js',
+        source + '/libs/owl-carousel/js/owl.carousel.min.js',
         // Plugin`s js here
     ])
         .pipe(uglify()) //minify
