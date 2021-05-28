@@ -3,7 +3,7 @@
                     =    main scripts starts   =
 =====================================================
 */
-$(document).ready(function(){
+$(document).ready(function () {
     $('.one-slide').owlCarousel({
         items: 1,
         loop: true,
@@ -13,9 +13,15 @@ $(document).ready(function(){
         dots: false,
         margin: 0,
         drag: true,
-        navText: [
-        "<img src='assets/img/white_chevron_left.svg'>",
-            "<img src='assets/img/white_chevron_right.svg'>"]
+        navText: ["<img src='assets/img/white_chevron_left.svg'>", "<img src='assets/img/white_chevron_right.svg'>"],
+        responsive: {
+            0: {
+                nav:false
+            },
+            991: {
+                nav:true
+            }
+        }
     });
 
     $('.four-slide').owlCarousel({
@@ -27,12 +33,25 @@ $(document).ready(function(){
         dots: true,
         margin: 24,
         drag: true,
-        navText: [
-        "<img class='rotate-180' src='assets/img/coolicon-right.svg'>",
-            "<img src='assets/img/coolicon-right.svg'>"]
+        navText: ["<img class='rotate-180' src='assets/img/coolicon-right.svg'>", "<img src='assets/img/coolicon-right.svg'>"],
+
+        responsive: {
+            0: {
+                items: 2,
+                margin: 11
+            },
+            600: {
+                items: 3,
+                margin: 11
+            },
+            1000: {
+                items: 4,
+                margin: 24
+            }
+        }
     });
 
-    $('.tours-gallery-sc .gallery-option').click(function(){
+    $('.tours-gallery-sc .gallery-option').click(function () {
         let _this = $(this);
         let _content = $('.tours-gallery-sc .main.content');
         _content.find('h1').html(_this.find('.name').html());
@@ -41,32 +60,71 @@ $(document).ready(function(){
         $('.tours-gallery-sc .gallery-option').removeClass('active')
         _this.addClass('active')
 
-        let selectedImgSrc = 'assets'+_this.css('background-image').replace('url(','').replace(')','').replace(/\"/gi, "").split('assets')[1]
+        let selectedImgSrc = 'assets' + _this.css('background-image').replace('url(', '').replace(')', '').replace(/\"/gi, "").split('assets')[1]
         $('.tours-gallery-sc .bk-img.main-img').css(
-            "background",'url('+selectedImgSrc+')');
+            "background", 'url(' + selectedImgSrc + ')');
 
         $('.tours-gallery-sc .left-main-img').css(
-            "background",'url('+selectedImgSrc+')')
+            "background", 'url(' + selectedImgSrc + ')')
     })
 
-    $('.regions-sc .tab-head-item').click(function(){
+    $('.regions-sc .tab-head-item').click(function () {
         let _this = $(this);
         $('.regions-sc .tab-head-item').removeClass('active');
         _this.addClass('active');
 
         // $('.tab-body-item').hide()
-       $('.tab-body-item').hide().removeClass('active')
-        $('.tab-body-item[tab-index='+ _this.attr('tab-index')+']').fadeIn(300).addClass('active').show();
+        $('.tab-body-item').hide().removeClass('active')
+        $('.tab-body-item[tab-index=' + _this.attr('tab-index') + ']').fadeIn(300).addClass('active').show();
     })
 
-    $('.region-map-img svg g').click(function(){
+    $('.region-map-img svg g').click(function () {
         $('.region-map-img').addClass('opened')
 
         let _this = $(this);
         $('.region-map-img svg g').removeClass('active');
         _this.addClass('active');
-        
+
         $('.region-tab-list').removeClass('active')
-        $('.region-tab-list[region-name='+_this.attr('region-name')+']').addClass('active')
+        $('.region-tab-list[region-name=' + _this.attr('region-name') + ']').addClass('active')
+    })
+
+    $('.region-tab-close').click(function(){
+        $('.region-map-img').removeClass('opened')
+        $('.region-tab-list').removeClass('active')
+    })
+
+    $('.selected-lang').click(function(){
+        $('.lang-dropdown').slideDown()
+    })
+    $('.lang-item').click(function(){
+        $('.lang-dropdown').slideUp();
+        $('.selected-lang span').html($(this).html())
+        
+    })
+
+    $(document).on("click", function(event){
+        var $trigger = $(".lang-select");
+        if($trigger !== event.target && !$trigger.has(event.target).length){
+            $(".lang-dropdown").slideUp("fast");
+        }            
+    });
+
+    $('.hamburger').click(function(){
+        $('nav').addClass('opened');
+        $('.bk-layout').addClass('active');
+    })
+    $('.bk-layout').click(function(){
+        $('nav').removeClass('opened');
+        $(this).removeClass('active')
+    })
+    $('.close-menu').click(function(){
+        $('nav').removeClass('opened')
+        $('.bk-layout').removeClass('active');
+    })
+
+    $('.region-tab-list .region-name').click(function(){
+        $('.region-tab-list .content').removeClass('opened')
+        $(this).parent().find('.content').toggleClass('opened')
     })
 });
