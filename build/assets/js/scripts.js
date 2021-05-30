@@ -12,14 +12,18 @@ $(document).ready(function () {
         nav: true,
         dots: false,
         margin: 0,
-        drag: true,
+        // drag: true,
         navText: ["<img src='assets/img/white_chevron_left.svg'>", "<img src='assets/img/white_chevron_right.svg'>"],
         responsive: {
             0: {
-                nav:false
+                nav:false,
+                mouseDrag:false,
+                touchDrag: true
             },
             991: {
-                nav:true
+                nav:true,
+                mouseDrag:true,
+                touchDrag: false
             }
         }
     });
@@ -95,7 +99,7 @@ $(document).ready(function () {
     })
 
     $('.selected-lang').click(function(){
-        $('.lang-dropdown').slideDown()
+        $('.lang-dropdown').slideToggle()
     })
     $('.lang-item').click(function(){
         $('.lang-dropdown').slideUp();

@@ -103,6 +103,17 @@
 }
 
 @include mQ(991px){
+    .tours-gallery-sc {
+        .col-60 {
+            .gallery-option{
+                &:hover{
+                    &:before{
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
     .region-tab-close{
         display: block;
     }
@@ -279,6 +290,11 @@
                 .col-55{
                     margin-bottom: 32px;
                 }
+            }
+        }
+        &.home-banner-sc{
+            .item{
+                // min-height: 413px;
             }
         }
     }
@@ -494,6 +510,14 @@
 @include mQ(768px){
     .region-map-sc{
         min-height: calc(100vh - 76px);
+        position: relative;
+        .region-map-img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 32px);
+        }
     }
     .regions-sc.who-r-we-sc.support-sc{
         .tab-head-item{
@@ -580,6 +604,7 @@
                 padding: 0px;
             }
             p{
+                font-size: 10px;
                 &:not(:last-child){
                     margin-bottom: 16px;
                 }
