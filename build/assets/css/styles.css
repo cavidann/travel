@@ -147,6 +147,17 @@ input[type="password"] {
   src: url("fonts/Helvetica/HelveticaNeueCyr-Light.otf"); }
 
 /* fonts ends */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 2px; }
+
+::-webkit-scrollbar-track {
+  background: transparent; }
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #F15C2F; }
+
 .c-orange {
   color: #F15C2F; }
 
@@ -898,10 +909,13 @@ footer .info-list {
     margin: 0px !important;
     -webkit-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
-    transition: .3s ease-in-out; }
+    transition: .3s ease-in-out;
+    -webkit-filter: brightness(0);
+    filter: brightness(0); }
     .card-slider .owl-prev:hover, .card-slider .owl-next:hover {
       background-color: transparent !important;
-      opacity: .3; }
+      -webkit-filter: brightness(1);
+      filter: brightness(1); }
   .card-slider .owl-prev {
     margin-right: 24px !important; }
   .card-slider .owl-dots {
@@ -944,7 +958,8 @@ footer .info-list {
   margin-right: 16px; }
 
 .services-sc .service-item {
-  margin-bottom: 32px; }
+  margin-bottom: 32px;
+  font-size: 15px; }
 
 .services-sc .content {
   font-size: 18px;
@@ -1190,6 +1205,9 @@ footer .info-list {
   .tab-head-item:not(:last-child) {
     margin-right: 16px; }
 
+.c-white {
+  color: #FFFFFF !important; }
+
 .region-map-sc {
   background: url(../img/regions-map-bk.png) no-repeat;
   -webkit-background-size: cover;
@@ -1213,6 +1231,10 @@ footer .info-list {
       -webkit-transition: .3s ease-in-out;
       -o-transition: .3s ease-in-out;
       transition: .3s ease-in-out; }
+      .region-map-sc .region-map-img svg .word {
+        -webkit-transition: .3s ease-in-out;
+        -o-transition: .3s ease-in-out;
+        transition: .3s ease-in-out; }
       .region-map-sc .region-map-img svg g {
         cursor: pointer;
         background-color: firebrick; }
@@ -1224,10 +1246,14 @@ footer .info-list {
             opacity: 0; }
         .region-map-sc .region-map-img svg g:hover path, .region-map-sc .region-map-img svg g:hover circle {
           opacity: 1; }
+        .region-map-sc .region-map-img svg g:hover .word {
+          fill: #F15C2F !important; }
         .region-map-sc .region-map-img svg g.active path, .region-map-sc .region-map-img svg g.active circle {
           opacity: 1; }
         .region-map-sc .region-map-img svg g.active .more-word {
           opacity: 0; }
+        .region-map-sc .region-map-img svg g.active .word {
+          fill: #F15C2F !important; }
   .region-map-sc .region-tab-list {
     padding-top: 32px;
     overflow: auto;

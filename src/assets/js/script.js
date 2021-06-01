@@ -36,21 +36,27 @@ $(document).ready(function () {
         nav: true,
         dots: true,
         margin: 24,
-        drag: true,
-        navText: ["<img class='rotate-180' src='assets/img/coolicon-right.svg'>", "<img src='assets/img/coolicon-right.svg'>"],
+        // drag: true,
+        navText: ["<img class='rotate-180 right-orange-icon' src='assets/img/coolicon-right-orange.svg'>", "<img class='right-orange-icon' src='assets/img/coolicon-right-orange.svg'>"],
 
         responsive: {
             0: {
                 items: 2,
-                margin: 11
+                margin: 11,
+                mouseDrag:false,
+                touchDrag: true
             },
             600: {
                 items: 3,
-                margin: 11
+                margin: 11,
+                mouseDrag:false,
+                touchDrag: true
             },
             1000: {
                 items: 4,
-                margin: 24
+                margin: 24,
+                mouseDrag:true,
+                touchDrag: false
             }
         }
     });
@@ -83,14 +89,22 @@ $(document).ready(function () {
     })
 
     $('.region-map-img svg g').click(function () {
-        $('.region-map-img').addClass('opened')
-
-        let _this = $(this);
-        $('.region-map-img svg g').removeClass('active');
-        _this.addClass('active');
-
-        $('.region-tab-list').removeClass('active')
-        $('.region-tab-list[region-name=' + _this.attr('region-name') + ']').addClass('active')
+        if(!$(this).hasClass('map-opened')){
+            $(this).addClass('map-opened');
+            $('.region-map-img').addClass('opened')
+    
+            let _this = $(this);
+            $('.region-map-img svg g').removeClass('active');
+            _this.addClass('active');
+    
+            $('.region-tab-list').removeClass('active');
+            $('.region-tab-list[region-name=' + _this.attr('region-name') + ']').addClass('active')
+        } else {
+            $(this).removeClass('map-opened');
+            $('.region-map-img').removeClass('opened');
+            $('.region-map-img svg g').removeClass('active');
+            $('.region-tab-list').removeClass('active');
+        }
     })
 
     $('.region-tab-close').click(function(){

@@ -262,6 +262,20 @@ $blue: #2F94F1;
 $white: #FFFFFF;
 $black: #2D2522;
 
+::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: $orange;
+  }
+
 .c-orange{
     color: $orange;
 }
@@ -1158,9 +1172,10 @@ footer{
     .owl-prev, .owl-next{
         margin: 0px!important;
         transition: .3s ease-in-out;
+        filter: brightness(0);
         &:hover{
             background-color: transparent!important;
-            opacity: .3;
+            filter: brightness(1);
         }
     }
     .owl-prev{
@@ -1218,6 +1233,7 @@ footer{
     }
     .service-item{
         margin-bottom: 32px;
+        font-size: 15px;
     }
     .content{
         font-size: 18px;
@@ -1513,7 +1529,9 @@ footer{
         margin-right: 16px;
     }
 }
-
+.c-white{
+    color: $white!important;
+}
 .region-map-sc{
     background: url(../img/regions-map-bk.png) no-repeat;
     background-size: cover;
@@ -1540,6 +1558,9 @@ footer{
         svg{
             width: 100%;
             transition: .3s ease-in-out;
+            .word{
+                transition: .3s ease-in-out;
+            }
             g{
                 cursor: pointer;
                 background-color: firebrick;
@@ -1553,6 +1574,9 @@ footer{
                     path, circle{
                         opacity: 1;
                     }
+                    .word{
+                        fill: $orange!important;
+                    }
                 }
                 &.active{
                     path, circle{
@@ -1560,6 +1584,9 @@ footer{
                     }
                     .more-word{
                         opacity: 0;
+                    }
+                    .word{
+                        fill: $orange!important;
                     }
                 }
             }
