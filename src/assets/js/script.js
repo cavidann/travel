@@ -3,6 +3,11 @@
                     =    main scripts starts   =
 =====================================================
 */
+$(window).on("load", function () {
+
+    $(".loader-outer").fadeOut(1000)
+})
+
 $(document).ready(function () {
     $('.one-slide').owlCarousel({
         items: 1,
